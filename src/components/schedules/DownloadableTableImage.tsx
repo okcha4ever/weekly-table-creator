@@ -1,7 +1,7 @@
 import { toPng } from "html-to-image";
 import { useRef } from "react";
 import { EditableTable } from "./editable-table";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 
 const MyTableWithDownload = () => {
 	const tableRef = useRef(null);

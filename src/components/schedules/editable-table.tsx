@@ -1,10 +1,8 @@
-"use client";
-
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { TimeRangePicker } from "@/components/time-range-picker";
-import { DayPicker } from "@/components/day-picker";
+import { TimeRangePicker } from "@/components/schedules/time-range-picker";
+import { DayPicker } from "@/components/schedules/day-picker";
 
 const initialHeaders = ["المادة", "اليوم", "الوقت", "الأستاذ/الأستاذة"];
 

@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TableViewRouteImport } from './routes/table/view'
+import { Route as TableTableidRouteImport } from './routes/table/$tableid'
 import { Route as DemoTanstackQueryRouteImport } from './routes/demo/tanstack-query'
 import { Route as DemoTableRouteImport } from './routes/demo/table'
 import { Route as DemoDrizzleRouteImport } from './routes/demo/drizzle'
@@ -25,6 +27,16 @@ import { Route as DemoStartSsrDataOnlyRouteImport } from './routes/demo/start.ss
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TableViewRoute = TableViewRouteImport.update({
+  id: '/table/view',
+  path: '/table/view',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TableTableidRoute = TableTableidRouteImport.update({
+  id: '/table/$tableid',
+  path: '/table/$tableid',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoTanstackQueryRoute = DemoTanstackQueryRouteImport.update({
@@ -88,6 +100,8 @@ export interface FileRoutesByFullPath {
   '/demo/drizzle': typeof DemoDrizzleRoute
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/table/$tableid': typeof TableTableidRoute
+  '/table/view': typeof TableViewRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -102,6 +116,8 @@ export interface FileRoutesByTo {
   '/demo/drizzle': typeof DemoDrizzleRoute
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/table/$tableid': typeof TableTableidRoute
+  '/table/view': typeof TableViewRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -117,6 +133,8 @@ export interface FileRoutesById {
   '/demo/drizzle': typeof DemoDrizzleRoute
   '/demo/table': typeof DemoTableRoute
   '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/table/$tableid': typeof TableTableidRoute
+  '/table/view': typeof TableViewRoute
   '/demo/api/names': typeof DemoApiNamesRoute
   '/demo/api/tq-todos': typeof DemoApiTqTodosRoute
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
@@ -133,6 +151,8 @@ export interface FileRouteTypes {
     | '/demo/drizzle'
     | '/demo/table'
     | '/demo/tanstack-query'
+    | '/table/$tableid'
+    | '/table/view'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -147,6 +167,8 @@ export interface FileRouteTypes {
     | '/demo/drizzle'
     | '/demo/table'
     | '/demo/tanstack-query'
+    | '/table/$tableid'
+    | '/table/view'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -161,6 +183,8 @@ export interface FileRouteTypes {
     | '/demo/drizzle'
     | '/demo/table'
     | '/demo/tanstack-query'
+    | '/table/$tableid'
+    | '/table/view'
     | '/demo/api/names'
     | '/demo/api/tq-todos'
     | '/demo/start/api-request'
@@ -176,6 +200,8 @@ export interface RootRouteChildren {
   DemoDrizzleRoute: typeof DemoDrizzleRoute
   DemoTableRoute: typeof DemoTableRoute
   DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  TableTableidRoute: typeof TableTableidRoute
+  TableViewRoute: typeof TableViewRoute
   DemoApiNamesRoute: typeof DemoApiNamesRoute
   DemoApiTqTodosRoute: typeof DemoApiTqTodosRoute
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
@@ -193,6 +219,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/table/view': {
+      id: '/table/view'
+      path: '/table/view'
+      fullPath: '/table/view'
+      preLoaderRoute: typeof TableViewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/table/$tableid': {
+      id: '/table/$tableid'
+      path: '/table/$tableid'
+      fullPath: '/table/$tableid'
+      preLoaderRoute: typeof TableTableidRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/tanstack-query': {
@@ -280,6 +320,8 @@ const rootRouteChildren: RootRouteChildren = {
   DemoDrizzleRoute: DemoDrizzleRoute,
   DemoTableRoute: DemoTableRoute,
   DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  TableTableidRoute: TableTableidRoute,
+  TableViewRoute: TableViewRoute,
   DemoApiNamesRoute: DemoApiNamesRoute,
   DemoApiTqTodosRoute: DemoApiTqTodosRoute,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
